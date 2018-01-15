@@ -8,12 +8,19 @@ import { DataService } from '../services/data.service';
 })
 export class StoreComponent implements OnInit {
   constructor(private dataService: DataService) { }
-  products;
+  products: Object[];
+  currentPage: Number;
+  next: boolean;
+  previous: boolean;
 
   ngOnInit() {
     const $scope = this;
     this.dataService.getAllProducts().then(data => {
-      $scope.products = data;
+      $scope.products = data.results;
+      $scope.next = data.next;
+      $scope.previous = data.previous;
+      $scope.currentPage = data.currentPage;
+      console.log($scope.products);
     })
   }
 }
