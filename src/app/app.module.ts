@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, ActivatedRouteSnapshot } from '@angular/router'
+import { HttpModule } from '@angular/http';
+
 
 //  Routes
 import { appRoutes } from '../routes'
@@ -19,6 +21,7 @@ import { CartComponent } from './cart/cart.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { DataService } from './services/data.service';
 
 
 @NgModule({
@@ -37,11 +40,14 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes,
         { enableTracing: false }) // <-- debugging purposes only)
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
