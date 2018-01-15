@@ -5,6 +5,7 @@ import { BlogComponent } from './app/blog/blog.component';
 import { EventsComponent } from './app/events/events.component';
 import { ContactComponent } from './app/contact/contact.component';
 import { AboutComponent } from './app/about/about.component';
+import { CartComponent } from './app/cart/cart.component';
 
 
 export const appRoutes: Routes = [
@@ -17,5 +18,6 @@ export const appRoutes: Routes = [
   // { path: 'event/:id', component: EventComponent },
   { path: 'contact', component: ContactComponent },
   // { path: 'cart', component: StoreComponent },
+  { path: 'cart', component: CartComponent },
   { path: '**', component: PageNotFoundComponent }
 ]
