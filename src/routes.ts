@@ -6,11 +6,12 @@ import { EventsComponent } from './app/events/events.component';
 import { ContactComponent } from './app/contact/contact.component';
 import { AboutComponent } from './app/about/about.component';
 import { CartComponent } from './app/cart/cart.component';
+import { ProductComponent } from './app/store/product.component';
 
 
 export const appRoutes: Routes = [
   { path: '', component: StoreComponent },
-  // { path: 'product/:id', component: StoreComponent },
+   { path: 'product/:id', component: ProductComponent },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
   // { path: 'post/:id', component: PostComponent },

@@ -22,6 +22,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { DataService } from './services/data.service';
+import { CartService } from './services/cart.service';
+import { ProductComponent } from './store/product.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { DataService } from './services/data.service';
     CartComponent,
     AboutComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
+    ProductComponent
   ],
   imports: [
     HttpModule,
@@ -46,7 +49,8 @@ import { DataService } from './services/data.service';
         { enableTracing: false }) // <-- debugging purposes only)
   ],
   providers: [
-    DataService
+    DataService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

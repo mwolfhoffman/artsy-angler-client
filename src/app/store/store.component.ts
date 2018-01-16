@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'store',
@@ -7,7 +8,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private cartService: CartService) { }
   products: Object[];
   currentPage: Number;
   next: boolean;
@@ -22,5 +23,11 @@ export class StoreComponent implements OnInit {
       $scope.currentPage = data.currentPage;
       console.log($scope.products);
     })
+  }
+
+  AddProductToCart(product: Object) {
+    this.cartService.addItemToCart(product);
+    var test = JSON.parse(localStorage.getItem("ShoppingCartKey"));
+    console.log('testing cart... ', test);
   }
 }
