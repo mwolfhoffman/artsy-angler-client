@@ -15,19 +15,28 @@ export class ProductComponent {
 
     }
     product: Object;
-    
+
     ngOnInit() {
-        let id = this.route.params['value']['id'];
-        this.dataService.getProduct(id)
-        .then(data=> this.product=data)
+        var that = this;
+        var products = JSON.parse(localStorage.getItem('products'));
+        if (products !== null || typeof products !== 'undefined') {
+            var slug = this.route.params.value.id;
+            var item = products.find(x => { return x.slug === slug });
+            this.product = item;
+        } else {
+            debugger;
+            let id = this.route.params['value']['id'];
+            this.dataService.getProduct(id).subscribe((prod: any) => {
+                that.product = prod.data.product;
+            })
+        }
     }
 
     AddProductToCart(product: Object) {
         this.cartService.addItemToCart(product);
         var test = JSON.parse(localStorage.getItem("ShoppingCartKey"));
-        console.log('testing cart... ', test);
-      }
+    }
 
-      //  TODO: check  if product is in cart
+    //  TODO: check  if product is in cart
 
 }

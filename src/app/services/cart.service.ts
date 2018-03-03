@@ -23,7 +23,6 @@ export class CartService {
 
     addItemToCart(product: Object) {
         let cartItem = new CartItem(product);
-        console.log(cartItem)
         
         if (this.items[product['id']]) {
             return this.updateQty(cartItem.id);

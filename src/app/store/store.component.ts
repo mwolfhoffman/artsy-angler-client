@@ -9,24 +9,37 @@ import { CartService } from '../services/cart.service';
 })
 export class StoreComponent implements OnInit {
   constructor(private dataService: DataService, private cartService: CartService) { }
-  products: Object[];
+  products: any[];
   currentPage: Number;
   next: boolean;
   previous: boolean;
 
   ngOnInit() {
-    const $scope = this;
-    this.dataService.getAllProducts().then(data => {
-      $scope.products = data.results;
-      $scope.next = data.next;
-      $scope.previous = data.previous;
-      $scope.currentPage = data.currentPage;
-      console.log($scope.products);
+    this.getProducts();
+  };
+
+  getProducts() {
+    var prods = localStorage.getItem('products');
+    return localStorage.getItem('products') ? this.getProductsFromLocalStorage() : this.getProductsFromServer();
+  };
+
+  getProductsFromServer() {
+    var prods = localStorage.getItem('products');
+    var that = this;
+    that.products = null;
+    this.dataService.getAllProducts().subscribe((products: any[]) => {
+      localStorage.setItem('products', JSON.stringify(products.products.results));
+      that.getProductsFromLocalStorage();
     })
+  };
+
+  //  TODO: redis or some caching instead? 
+  getProductsFromLocalStorage() {
+    var prods = localStorage.getItem('products');
+    this.products = JSON.parse(localStorage.getItem('products'));
   }
 
   AddProductToCart(product: Object) {
     this.cartService.addItemToCart(product);
-    console.log('testing cart... ', this.cartService.getItems());
   }
 }
