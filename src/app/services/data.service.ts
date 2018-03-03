@@ -17,9 +17,9 @@ export class DataService {
         let promise = new Promise((resolve, reject) => {
             this.http.get(this.apiRoot + '/store')
                 .toPromise()
-                .then(res => {
-                    var results: Object[] = JSON.parse(res._body);
-                    return resolve(results.products);
+                .then(res=> {
+                    var results: Object[] = JSON.parse(res['_body']);
+                    return resolve(results['products']);
                 },
                 err => {
                     reject(err);
@@ -34,8 +34,8 @@ export class DataService {
             this.http.get(url)
                 .toPromise()
                 .then(res => {
-                    var data: Object = JSON.parse(res._body);
-                    return resolve(data.data.product);
+                    var data: Object = JSON.parse(res['_body']);
+                    return resolve(data['data'].product);
                 },
                 err => {
                     reject(err)

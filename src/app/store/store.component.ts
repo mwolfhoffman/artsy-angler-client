@@ -27,7 +27,6 @@ export class StoreComponent implements OnInit {
 
   AddProductToCart(product: Object) {
     this.cartService.addItemToCart(product);
-    var test = JSON.parse(localStorage.getItem("ShoppingCartKey"));
-    console.log('testing cart... ', test);
+    console.log('testing cart... ', this.cartService.getItems());
   }
 }

@@ -2,33 +2,34 @@ import { Injectable } from '@angular/core'
 import { Subject, Observable } from 'rxjs/RX'
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { CartItem } from '../models/cartItem'
 
 @Injectable()
 export class CartService {
     key: string = "ShoppingCartKey";
-    items: Object[];
+    items: Object;
 
     constructor() {
         if (localStorage.getItem(this.key)) {
             this.items = JSON.parse(localStorage.getItem(this.key));
         } else {
-            this.items = [];
+            this.items = {};
         }
     }
 
     getItems() {
-        return this.items = JSON.parse(localStorage.getItem(this.key));
+        return JSON.parse(localStorage.getItem(this.key)) || {};
     }
 
     addItemToCart(product: Object) {
-        //  check if it was already added
-        let items = this.items.filter(i=> i===product);
-        if(items){
-            //  TODO: change to toast
-           return console.log('item already added to cart');
+        let cartItem = new CartItem(product);
+        console.log(cartItem)
+        
+        if (this.items[product['id']]) {
+            return this.updateQty(cartItem.id);
         }
-        //  if it wasn't, add it
-        this.items.push(product);
+        
+        this.items[cartItem.id] = cartItem;
         this.saveCart(this.items);
     }
 
@@ -47,5 +48,9 @@ export class CartService {
         localStorage.clear();
     }
 
+    updateQty(id) {
+        this.items[id].qty++;
+        return this.saveCart(this.items[id]);
+    }
 
 }
