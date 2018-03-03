@@ -7,6 +7,7 @@ import { ContactComponent } from './app/contact/contact.component';
 import { AboutComponent } from './app/about/about.component';
 import { CartComponent } from './app/cart/cart.component';
 import { ProductComponent } from './app/store/product.component';
+import { EventComponent } from './app/events/event.component'
 
 
 export const appRoutes: Routes = [
@@ -16,7 +17,7 @@ export const appRoutes: Routes = [
   { path: 'blog', component: BlogComponent },
   // { path: 'post/:id', component: PostComponent },
   { path: 'events', component: EventsComponent },
-  // { path: 'event/:id', component: EventComponent },
+  { path: 'event/:id', component: EventComponent },
   { path: 'contact', component: ContactComponent },
   // { path: 'cart', component: StoreComponent },
   { path: 'cart', component: CartComponent },

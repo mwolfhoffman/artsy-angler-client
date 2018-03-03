@@ -33,10 +33,10 @@ export class StoreComponent implements OnInit {
     })
   };
 
-  //  TODO: redis or some caching instead? 
   getProductsFromLocalStorage() {
     var prods = localStorage.getItem('products');
     this.products = JSON.parse(localStorage.getItem('products'));
+    console.log('products ', this.products)
   }
 
   AddProductToCart(product: Object) {

@@ -17,6 +17,7 @@ export class DataService {
         return Observable.throw(err.statusText);
     }
 
+    ////////    PRODUCTS    //////////
     //  TODO: create a Product model and use that instead of any
     getAllProducts(): Observable<any[]> {
         return this.http.get(this.apiRoot + '/store').map((res: Response) => {
@@ -29,6 +30,31 @@ export class DataService {
             return <any>res.json();
         }).catch(this.handleError);
     }
+
+    /////////////////////////////////
+
+
+    ////////      EVENTS    ////////
+    getAllEvents(): Observable<any[]> {
+        return this.http.get(this.apiRoot + '/events').map((res: Response) => {
+            return <any[]>res.json();
+        }).catch(this.handleError);
+    }
+
+    getEvent(id: string): Observable<any> {
+        return this.http.get(this.apiRoot + '/event/' + id).map((res: Response) => {
+            return <any>res.json();
+        }).catch(this.handleError);
+    }
+
+
+    ///////////////////////////////
+
+
+
+    //////  BLOG        ///////////
+
+    /////////////////////////////
 
 }
 
