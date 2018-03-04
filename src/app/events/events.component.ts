@@ -21,7 +21,6 @@ export class EventsComponent implements OnInit {
 
   getEvents() {
     var events = localStorage.getItem('events');
-    debugger
     return localStorage.getItem('events') ? this.getEventsFromLocalStorage() : this.getEventsFromServer();
   };
 
@@ -30,7 +29,6 @@ export class EventsComponent implements OnInit {
     var that = this;
     that.events = null;
     this.dataService.getAllEvents().subscribe((data: any[]) => {
-      console.log(data);
       localStorage.setItem('events', JSON.stringify(data.data.events));
       that.getEventsFromLocalStorage();
     })
@@ -39,7 +37,6 @@ export class EventsComponent implements OnInit {
   getEventsFromLocalStorage() {
     var events = localStorage.getItem('events');
     this.events = JSON.parse(localStorage.getItem('events'));
-    console.log(this.events)
   }
 
 }

@@ -53,6 +53,17 @@ export class DataService {
 
 
     //////  BLOG        ///////////
+    getAllPosts(): Observable<any[]> {
+        return this.http.get(this.apiRoot + '/blog').map((res: Response) => {
+            return <any[]>res.json();
+        }).catch(this.handleError);
+    }
+
+    getPost(id: string): Observable<any> {
+        return this.http.get(this.apiRoot + '/blog/post/' + id).map((res: Response) => {
+            return <any>res.json();
+        }).catch(this.handleError);
+    }
 
     /////////////////////////////
 

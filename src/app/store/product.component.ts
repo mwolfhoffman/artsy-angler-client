@@ -24,7 +24,6 @@ export class ProductComponent {
             var item = products.find(x => { return x.slug === slug });
             this.product = item;
         } else {
-            debugger;
             let id = this.route.params['value']['id'];
             this.dataService.getProduct(id).subscribe((prod: any) => {
                 that.product = prod.data.product;

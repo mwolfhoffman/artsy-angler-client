@@ -36,7 +36,6 @@ export class StoreComponent implements OnInit {
   getProductsFromLocalStorage() {
     var prods = localStorage.getItem('products');
     this.products = JSON.parse(localStorage.getItem('products'));
-    console.log('products ', this.products)
   }
 
   AddProductToCart(product: Object) {

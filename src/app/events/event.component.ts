@@ -20,7 +20,6 @@ export class EventComponent implements OnInit{
           var item = events.find(x => { return x.slug === slug });
           this.event = item;
       } else {
-          debugger;
           let id = this.route.params['value']['id'];
           this.dataService.getProduct(id).subscribe((prod: any) => {
               that.event = prod.data.event;
