@@ -28,7 +28,7 @@ export class EventsComponent implements OnInit {
     var events = localStorage.getItem('events');
     var that = this;
     that.events = null;
-    this.dataService.getAllEvents().subscribe((data: any[]) => {
+    this.dataService.getAllEvents().subscribe((data: any) => {
       localStorage.setItem('events', JSON.stringify(data.data.events));
       that.getEventsFromLocalStorage();
     })

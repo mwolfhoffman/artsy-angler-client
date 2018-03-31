@@ -27,7 +27,7 @@ export class StoreComponent implements OnInit {
     var prods = localStorage.getItem('products');
     var that = this;
     that.products = null;
-    this.dataService.getAllProducts().subscribe((products: any[]) => {
+    this.dataService.getAllProducts().subscribe((products: any) => {
       localStorage.setItem('products', JSON.stringify(products.products.results));
       that.getProductsFromLocalStorage();
     })

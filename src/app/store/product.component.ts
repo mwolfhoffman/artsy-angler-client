@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { DataService } from '../services/data.service';
-import { ActivatedRoute } from '@angular/router'
-
+import { ActivatedRoute, } from '@angular/router'
 
 
 @Component({
@@ -17,10 +16,14 @@ export class ProductComponent {
     product: Object;
 
     ngOnInit() {
+        debugger;
         var that = this;
         var products = JSON.parse(localStorage.getItem('products'));
         if (products !== null || typeof products !== 'undefined') {
-            var slug = this.route.params.value.id;
+         let slug;
+            this.route.params.subscribe(params =>{
+                slug = params['id']
+            })
             var item = products.find(x => { return x.slug === slug });
             this.product = item;
         } else {

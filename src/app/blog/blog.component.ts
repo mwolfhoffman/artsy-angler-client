@@ -24,7 +24,7 @@ export class BlogComponent implements OnInit {
     var prods = localStorage.getItem('posts');
     var that = this;
     that.posts = null;
-    this.dataService.getAllPosts().subscribe((posts: any[]) => {
+    this.dataService.getAllPosts().subscribe((posts: any) => {
       console.log(posts);
       localStorage.setItem('posts', JSON.stringify(posts.data.posts.results));
       that.getPostsFromLocalStorage();
