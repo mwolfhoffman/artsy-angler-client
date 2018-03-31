@@ -20,7 +20,6 @@ export const appRoutes: Routes = [
   { path: 'events', component: EventsComponent },
   { path: 'event/:id', component: EventComponent },
   { path: 'contact', component: ContactComponent },
-  // { path: 'cart', component: StoreComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', loadChildren:'app/cart/cart.module#CartModule'},
   { path: '**', component: PageNotFoundComponent }
 ]

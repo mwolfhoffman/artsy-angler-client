@@ -17,7 +17,6 @@ import { EventComponent } from './events/event.component';
 import { EventsComponent } from './events/events.component';
 import { BlogComponent } from './blog/blog.component';
 import { PostComponent } from './blog/post.component';
-import { CartComponent } from './cart/cart.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
@@ -36,7 +35,6 @@ import { ProductComponent } from './store/product.component';
     EventsComponent,
     BlogComponent,
     PostComponent,
-    CartComponent,
     AboutComponent,
     ContactComponent,
     FooterComponent,
