@@ -22,7 +22,9 @@ export class CartService {
     }
 
     addItemToCart(product: any) {
+        debugger;
         let cartItem = new CartItem(product);
+        this.items=this.getItems();
         this.items[product._id] = cartItem;
         this.saveCart(this.items);
     }
