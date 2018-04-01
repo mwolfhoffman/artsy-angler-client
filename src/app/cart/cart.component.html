@@ -3,13 +3,25 @@
 
         <div class="col-lg-6 contact_col col-lg-offset-3">
             <div class="contact_contents">
-                <h1 class="text-center">Cart Coming Soon...</h1>
+                <h1 class="text-center">Checkout</h1>
             </div>
         </div>
     </div>
 
-    <div class="row" *ngFor="let item of items" >
-            <app-cart-item [item]="item" (refreshCart)="setItems($event)"></app-cart-item>
+    <div class="row" *ngIf="!items.length">
+        <h4>
+            <em> You currently have no items in your cart.</em>
+        </h4>
+    </div>
+
+    <div class="row" *ngFor="let item of items">
+        <app-cart-item [item]="item" (refreshCart)="setItems($event)"></app-cart-item>
+    </div>
+
+    <div class="row" *ngIf="items.length">
+        <div class="col-xs-12 col-md-1 col-md-offset-11">
+            <h4>Total: {{cartTotal | currency:'USD'}}</h4>
+        </div>
     </div>
 
 </div>

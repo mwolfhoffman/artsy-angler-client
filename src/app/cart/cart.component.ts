@@ -11,6 +11,8 @@ import { CartItem } from '../models/cartItem';
 
 export class CartComponent implements OnInit {
   items: Object;
+  cartTotal: number;
+
   constructor(private cart: CartService) {
 
   }
@@ -19,10 +21,19 @@ export class CartComponent implements OnInit {
     this.setItems();
   }
 
-  setItems(event=null) {
-    debugger;
+  setItems(event = null) {
     this.items = Object.values(this.cart.getItems());
+    this.calculateTotal();
+  }
 
+  calculateTotal() {
+    var total = 0;
+    var itemsArr = Object.values(this.cart.getItems());
+    itemsArr.forEach((i: CartItem) => {
+      total += <number>i.price;
+    });
+    this.cartTotal = total;
+    return
   }
 
 }
