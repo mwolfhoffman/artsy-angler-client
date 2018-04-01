@@ -23,5 +23,12 @@
             <h4>Total: {{cartTotal | currency:'USD'}}</h4>
         </div>
     </div>
+</div>
 
+<div class="container" *ngIf="items.length">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <button [routerLink]="['/cart/checkout']" class="btn-success"> Proceed To Checkout </button>
+        </div>
+    </div>
 </div>
