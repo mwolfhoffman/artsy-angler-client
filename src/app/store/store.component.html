@@ -8,10 +8,10 @@
 
             <!-- Items... -->
             <div class="row">
-                <div class="col">
-                    <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-                        <div class="product-item men" *ngFor="let product of products">
-                            <div class="product product_filter" [routerLink]="['/product', product.slug]">
+                <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+                    <div class="product-item men" *ngFor="let product of products">
+                        <div class="col">
+                            <div class="product product_filter"  [routerLink]="['/product', product.slug]">
                                 <div class="product_image">
                                     <img src={{product.image.url}} class="img-thumbnail img-fluid center-img" style="max-width:150px;" alt="">
                                 </div>
