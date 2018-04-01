@@ -4,9 +4,12 @@
         <div class="col-lg-6 contact_col col-lg-offset-3">
             <div class="contact_contents">
                 <h1 class="text-center">Cart Coming Soon...</h1>
-
-
             </div>
         </div>
     </div>
+
+    <div class="row" *ngFor="let item of items" >
+            <app-cart-item [item]="item" (refreshCart)="setItems($event)"></app-cart-item>
+    </div>
+
 </div>

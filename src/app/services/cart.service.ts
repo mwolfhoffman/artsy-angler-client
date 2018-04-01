@@ -21,24 +21,19 @@ export class CartService {
         return JSON.parse(localStorage.getItem(this.key)) || {};
     }
 
-    addItemToCart(product: Object) {
+    addItemToCart(product: any) {
         let cartItem = new CartItem(product);
-        
-        if (this.items[product['id']]) {
-            return this.updateQty(cartItem.id);
-        }
-        
-        this.items[cartItem.id] = cartItem;
+        this.items[product._id] = cartItem;
         this.saveCart(this.items);
     }
 
     removeItemFromCart(id: string) {
         let items = this.getItems();
-        items = items.filter(i => i.id !== id);
+        delete items[id]
         return this.saveCart(items);
     }
 
-    saveCart(cartObj: Object) {
+    saveCart(cartObj: any) {
         let itemString = JSON.stringify(cartObj);
         localStorage.setItem(this.key, itemString);
     }

@@ -9,7 +9,7 @@ export class CartItem {
         this.taxable = product.taxable
         this.title = product.title;
         this.v = product.number;
-        this.id = product.id;
+        this.id = product._id;
         this.qty = 1;
 
     }
